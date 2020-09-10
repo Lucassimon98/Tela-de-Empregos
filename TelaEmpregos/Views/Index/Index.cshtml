@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<br />
+<h2>
+    Bem vindo
+</h2>
+<h1>Tela de Empregos</h1>
+<H2>o melhor lugar para seu Curriculum</H2>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<form action="~/Index/LogOn" method="post" id="formLogin">
+    <p>
+        <label>E-Mail:</label>
+        <input type="email" value="Digite seu e-mail" onfocus="this.value='';" id="email" name="txtEmailEntrar" />
+    </p>
+
+    <p>
+        <label>Senha:</label>
+        <input type="password" id="Senha" name="txtSenhaEntrar" />
+    </p>
+
+    <br />
+    <button type="submit">Logar-se</button>
+    <br />
+</form>
+<br />
+<button type="submit" onclick="CadastroPage()">Cadastre-se</button>
+
+<script>
+    function CadastroPage() {
+        document.location.href = "../../Cadastro/Cadastro";
+    }
+</script>
+<script type="text/javascript">
+
+    var urlBase = '@Url.Content("~")';
+
+    function redirecionar() {
+        window.location.href = urlBase + 'Inicio/Inicio';
+    }
+
+    var formLogin = $('#formLogin');
+
+    formLogin.submit(function (e) {
+        $.LoadingOverlay("Show");
+        $.ajax(
+            {
+                type: formLogin.attr('method'),
+                url: formLogin.attr('action'),
+                data: formLogin.serialize(),
+                success: function (result) {
+                    $.LoadingOverlay("hide");
+
+                    if (result.Ok)
+                        showPopupSuccess(result.Message, redirecionar);
+                    else
+                        showPopupError(result.Message);
+                },
+                error: function (httpRequest, status, erro) {
+                    $.LoadingOverlay("hide");
+
+                    showPopupError(erro);
+                }
+            }
+        );
+        e.preventDefault();
+    }
+
+    );
+</script>

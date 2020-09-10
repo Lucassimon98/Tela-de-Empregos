@@ -1,0 +1,81 @@
+﻿@using TelaEmpregos.Models.data
+
+@model List<CadastroCurriculum>
+
+@{
+    ViewBag.Title = "Inicio";
+    Layout = "~/Views/_LayoutTelas.cshtml";
+}
+
+<div class="col-md-12" style="height:25px"></div>
+
+<div class="row">
+    <div class="col-md-1"></div>
+
+    @for (int i = 0; i < 5; i++)
+    {
+        if (i >= Model.Count)
+        {
+            break;
+        }
+
+        CadastroCurriculum cadastroCurriculum = Model[i];
+
+        <a href="/Curriculum/CurriculumPublic?id=@cadastroCurriculum.id">
+            <div class="col-md-2" id="borda">
+                <div class="row">
+                    @{
+                        string urlFoto = "Resource/dist/img/empty-profile.png";
+
+                        if (cadastroCurriculum.imagemPerfil != String.Empty)
+                        {
+                            urlFoto = "files/" + cadastroCurriculum.imagemPerfil;
+                        }
+                    }
+                    <img style="border-radius: 15px; width:100%; height:200px" src="~/@urlFoto" id="imgProfile" />
+                </div>
+                <div class="row" style="text-align: center">
+                    <br />
+                    <label style="color:black">@cadastroCurriculum.nome</label>
+                    <br />
+                </div>
+            </div>
+        </a>
+    }
+
+</div>
+
+<div class="row ">
+    <div class="col-md-1"></div>
+
+    @for (int i = 5; i < 10; i++)
+    {
+        if (i >= Model.Count)
+        {
+            break;
+        }
+        CadastroCurriculum cadastroCurriculum = Model[i];
+
+        <a href="/Curriculum/CurriculumPublic?id=@cadastroCurriculum.id">
+            <div class="col-md-2" id="borda">
+                <div class="row">
+                    @{
+                        string urlFoto = "Resource/dist/img/empty-profile.png";
+
+                        if (cadastroCurriculum.imagemPerfil != String.Empty)
+                        {
+                            urlFoto = "files/" + cadastroCurriculum.imagemPerfil;
+                        }
+                    }
+                    <img style="border-radius: 15px; width:100%; height:200px" src="~/@urlFoto" id="imgProfile" />
+                </div>
+                <div class="row" style="text-align: center">
+                    <br />
+                    <label style="color:black">@cadastroCurriculum.nome</label>
+                    <br />
+                    <label style="color:black">@cadastroCurriculum.profissao</label>
+                </div>
+            </div>
+        </a>
+    }
+</div>

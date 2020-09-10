@@ -1,0 +1,100 @@
+﻿#BodyIndex {
+    background-color: lightgray;
+    text-align: center;
+    height: 95vh;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+}
+
+#radius 
+{
+    width: 600px;
+    height: 600px;
+    background-color: crimson;
+    border-radius: 75%;
+}
+
+h2 {
+    color: azure;
+    font-family: 'MV Boli';
+}
+
+h1
+{
+    color: white;
+    font-family: 'MV Boli';
+    font-size: 50px;
+}
+
+label
+{
+    color: whitesmoke;
+}
+
+
+#btnCadastro 
+{
+    margin-top: 5px;
+    width: 90px;
+    height: 30px;
+}
+
+#btnLogar 
+{
+    width: 90px;
+    height: 30px;
+}
+
+#textJustify
+{
+    text-align: right;
+    margin-right: 28%;
+}
+
+#EditMenu {
+    background-color: crimson;
+}
+
+#EditNav {
+    background-color: lightgray;
+    
+}
+
+#divConta {
+    background-color: crimson;
+    height: 50px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+#btnConta
+{
+    background-color: crimson;
+    border: none;
+    height: 50px;
+}
+
+#lblPipe{
+    color: black;
+}
+
+#btnLogo {
+    background-image: url("../../Imagens/logo.jpg");
+    height: 50px;
+    width:52px;
+}
+
+#borda {
+    border: ridge;
+    border-width: 5px;
+    height: 330px;
+    border-color: crimson;
+    border-radius: 15px;
+}
+
+#mascara
+{
+   
+}

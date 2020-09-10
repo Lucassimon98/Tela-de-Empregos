@@ -1,0 +1,83 @@
+﻿@{
+    ViewBag.Title = "Cadastro";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<div id="textJustify">
+    <br />
+    <br />
+    <br />
+
+    <form method="post" action="~/Cadastro/IncluirUser" id="formEdit">
+
+        <h1>
+            Cadastre-se
+        </h1>
+        <br />
+        <br />
+        <br />
+        <p>
+            <label>E-Mail:</label>
+            <input type="email" value="email@email.com" onfocus="this.value=''" id="email" name="txtEmailCadastro" />
+        </p>
+
+        <p>
+            <label>Senha:</label>
+            <input type="password" id="Senha1" name="txtSenhaCadastro" />
+        </p>
+        <p>
+            <label>Confirmar Senha:</label>
+            <input type="password" id="Senha2" name="txtSenhaCadastro2" />
+        </p>
+
+        <br />
+        <button type="submit" value="Cadastre-se" id="btnCadastro">
+            Cadastrar
+        </button>
+
+    </form>
+
+    <br />
+    <br />
+    <p>Ja tem conta? Entao <a href="~/Index">Clique Aqui</a> para entrar.</p>
+</div>
+
+<script type="text/javascript">
+
+    var urlBase = '@Url.Content("~")';
+
+    function redirecionar() {
+        window.location.href = urlBase + 'Index/Index';
+    }
+
+    var formEdit = $('#formEdit');
+
+    formEdit.submit(function (e) {
+
+        $.LoadingOverlay("show");
+
+        $.ajax(
+            {
+                type: formEdit.attr('method'),
+                url: formEdit.attr('action'),
+                data: formEdit.serialize(),
+                success: function (result) {
+                    $.LoadingOverlay("hide");
+
+                    if(result.Ok)
+                        showPopupSuccess(result.Message, redirecionar);
+                    else
+                        showPopupError(result.Message);
+                },
+                error: function (httpRequest, status, erro) {
+                    $.LoadingOverlay("hide");
+
+                    showPopupError(erro);
+                }
+            }
+        );
+
+        e.preventDefault();
+    });
+
+</script>

@@ -1,0 +1,331 @@
+﻿@using TelaEmpregos.Models.data
+@model CadastroCurriculum
+
+@{
+    ViewBag.Title = "Curriculum";
+    Layout = "~/Views/_LayoutTelas.cshtml";
+
+    List<string> estados = ViewBag.Estados;
+
+    Cidade cidade = ViewBag.Cidade;
+}
+
+<form id="formEdit" class="form-horizontal" action="~/Curriculum/Edit" method="post">
+    <div class="col-md-6">
+        <div class="col-md-6" style="height: 235px">
+            <div class="box-body">
+
+                @{
+                    string urlFoto = "Resource/dist/img/empty-profile.png";
+
+                    if (Model.imagemPerfil != String.Empty)
+                    {
+                        urlFoto = "files/" + Model.imagemPerfil;
+                    }
+                }
+
+                <div class="form-group" style="text-align:center;">
+                    <img style="border-radius: 15px; width:180px" src="~/@urlFoto" id="imgProfile" />
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <input style="border-radius:5px" type="file" class="form-control" id="txtFile">
+                    </div>
+                </div>
+
+                <input id="txtImagemPerfil" name="txtImagemPerfil" type="hidden" value="@Model.imagemPerfil" />
+                <input id="txtIdCurriculum" name="txtIdCurriculum" type="hidden" value="@Model.id" />
+            </div>
+        </div>
+        <div class="col-md-6 pull-right" style="height:235px" id="infBasic">
+            <table>
+                <tr>
+                    <td style="padding:10px">
+                        <h2 style="font-size:20px" id="nomePessoa">Nome da Pessoa</h2>
+                        <input style="border-radius:5px" type="text" id="nomePessoa" name="txtNomePessoa" value="@Model.nome">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding:10px">
+                        <h2 style="font-size:20px" id="profissao">Area de Atuação</h2>
+                        <input style="border-radius:5px" type="text" id="areaAtuacao" name="txtAreaAtuacao" value="@Model.profissao">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <div style="text-align:center">
+                <h2>
+                    Habilidades
+                </h2>
+            </div>
+
+            <div>
+                <div>
+                    <div class="col-md-6"><h2 style="font-size:20px">Habilidades</h2></div>
+
+                    <div class="col-md-6">
+                        <h2 style="font-size:20px" id="lblConhecimentoNivel">Nível de conhecimento</h2>
+                    </div>
+                </div>
+                <p style="padding: 1.5%"></p>
+                <p id="p">
+                    <input style="border-radius:5px" type="text" id="habilidade1" name="txtHabilidadeUm" value="@Model.habilidade1">
+                    <select id="habilidades" name="slcNivelUm" style="border-radius:5px">
+                        <option @(Model.nivelConhecimento1 == "Selecionar Nível" ? "selected" : "")>Selecionar Nível</option>
+                        <option @(Model.nivelConhecimento1 == "Básico" ? "selected" : "")>Básico</option>
+                        <option @(Model.nivelConhecimento1 == "Médio" ? "selected" : "")>Médio</option>
+                        <option @(Model.nivelConhecimento1 == "Avançado" ? "selected" : "")>Avançado</option>
+                    </select>
+                </p>
+                <p style="padding: 1.5%">
+
+                </p>
+                <p id="p">
+                    <input style="border-radius:5px" type="text" id="habilidade2" name="txtHabilidadeDois" value="@Model.habilidade2">
+                    <select style="border-radius:5px" id="habilidades" name="slcNivelDois">
+                        <option @(Model.nivelConhecimento2 == "Selecionar Nível" ? "selected" : "")>Selecionar Nível</option>
+                        <option @(Model.nivelConhecimento2 == "Básico" ? "selected" : "")>Básico</option>
+                        <option @(Model.nivelConhecimento2 == "Médio" ? "selected" : "")>Médio</option>
+                        <option @(Model.nivelConhecimento2 == "Avançado" ? "selected" : "")>Avançado</option>
+                    </select>
+                </p>
+                <p style="padding: 1.5%"></p>
+                <p id="p">
+                    <input style="border-radius:5px" type="text" id="habilidade3" name="txtHabilidadeTres" value="@Model.habilidade3">
+                    <select style="border-radius:5px" id="habilidades" name="slcNivelTres">
+                        <option @(Model.nivelConhecimento3 == "Selecionar Nível" ? "selected" : "")>Selecionar Nível</option>
+                        <option @(Model.nivelConhecimento3 == "Básico" ? "selected" : "")>Básico</option>
+                        <option @(Model.nivelConhecimento3 == "Médio" ? "selected" : "")>Médio</option>
+                        <option @(Model.nivelConhecimento3 == "Avançado" ? "selected" : "")>Avançado</option>
+                    </select>
+                </p>
+                <p style="padding: 1.5%"></p>
+                <p id="p">
+                    <input style="border-radius:5px" type="text" id="habilidade4" name="txtHabilidadeQuatro" value="@Model.habilidade4">
+                    <select style="border-radius:5px" id="habilidades" name="slcNivelQuatro">
+                        <option @(Model.nivelConhecimento4 == "Selecionar Nível" ? "selected" : "")>Selecionar Nível</option>
+                        <option @(Model.nivelConhecimento4 == "Básico" ? "selected" : "")>Básico</option>
+                        <option @(Model.nivelConhecimento4 == "Médio" ? "selected" : "")>Médio</option>
+                        <option @(Model.nivelConhecimento4 == "Avançado" ? "selected" : "")>Avançado</option>
+                    </select>
+                </p>
+                <p style="padding: 1.5%"></p>
+                <p id="p">
+                    <input style="border-radius:5px" type="text" id="habilidade5" name="txtHabilidadeCinco" value="@Model.habilidade5">
+                    <select style="border-radius:5px" id="habilidades" name="slcNivelCinco">
+                        <option @(Model.nivelConhecimento5 == "Selecionar Nível" ? "selected" : "")>Selecionar Nível</option>
+                        <option @(Model.nivelConhecimento5 == "Básico" ? "selected" : "")>Básico</option>
+                        <option @(Model.nivelConhecimento5 == "Médio" ? "selected" : "")>Médio</option>
+                        <option @(Model.nivelConhecimento5 == "Avançado" ? "selected" : "")>Avançado</option>
+                    </select>
+                </p>
+
+            </div>
+        </div>
+
+        <div>
+            <div id="EspacoBranco">
+                <h2>Contato / Cidade</h2>
+            </div>
+
+            <div id="contato" class="col-md-6">
+                <p class="col-md-12">
+                    <h4><i class="fa fa-facebook-official"></i> Facebook: &nbsp;<input style="border-radius:5px" type="text" name="txtFacebook" value="@Model.facebook"></h4>
+                    <h4><i class="fa fa-linkedin"></i> LinkedIn: &nbsp;&nbsp;&nbsp;<input style="border-radius:5px" type="text" name="txtLinkedIn" value="@Model.linkedIn"></h4>
+                    <h4><i class="fa fa-whatsapp"></i> WhatsApp: <input style="border-radius:5px" type="text" name="txtWhatsApp" value="@Model.whatsApp"></h4>
+                </p>
+                <div class="col-md-6">
+                    <h2 style="font-size:20px">Estado:</h2>
+                    <p>
+                        <select id="txtEstado" class="form-control select2 col-md-6" style="width: 150px; border-radius:5px">
+                            @{
+                                foreach (string estado in estados)
+                                {
+                                    <option @(estado == cidade.estado ? "selected" : "")
+                                            value="@estado">
+                                        @estado
+                                    </option>
+                                }
+                            }
+                        </select>
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <h2 style="font-size:20px">Cidade:</h2>
+                    <p>
+                        <select id="txtCidade" name="slcCidade" class="form-control select2" style="width: 150px; border-radius:5px">
+                        </select>
+                    </p>
+                </div>
+                <p style="height: 250px">
+
+                </p>
+            </div>
+            <div>
+
+                <button style="font-size:20px; border-radius:10px" class="pull-right"><i class="fa fa-save"></i> Salvar </button>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div id="Pessoal">
+            <h2>Sobre</h2>
+            <textarea name="txtSobre" id="1" cols="30" rows="8" style="width: 100%; border-radius:5px">@Model.sobre</textarea>
+        </div>
+
+        <div id="Profissional">
+            <h2>Experiências Profissionais</h2>
+            <textarea name="txtExperienciaProfissional" id="1" cols="30" rows="8" style="width: 100%;border-radius:5px">@Model.experiencia</textarea>
+        </div>
+
+        <div id="Academica">
+            <h2>Formação Acadêmica</h2>
+            <textarea name="txtFormacaoAcademica" id="1" cols="30" rows="8" style="width: 100%;border-radius:5px">@Model.educacao</textarea>
+        </div>
+    </div>
+</form>
+
+<script type="text/javascript">
+    var urlBase = '@Url.Content("~")';
+
+    function redirecionar() {
+        window.location.href = urlBase + 'Curriculum/Curriculum';
+    }
+
+    var formEdit = $('#formEdit');
+
+    formEdit.submit(function (e) {
+
+        $.LoadingOverlay("show");
+
+        $.ajax(
+            {
+                type: formEdit.attr('method'),
+                url: formEdit.attr('action'),
+                data: formEdit.serialize(),
+                success: function (result) {
+                    $.LoadingOverlay("hide");
+
+                    if (result.Ok)
+                        showPopupSuccess(result.Message, redirecionar);
+                    else
+                        showPopupError(result.Message);
+                },
+                error: function (httpRequest, status, erro) {
+                    $.LoadingOverlay("hide");
+
+                    showPopupError(erro);
+                }
+            }
+        );
+
+        e.preventDefault();
+    });
+
+    function setarImagem(nomeArquivo) {
+        document.getElementById('txtImagemPerfil').value = nomeArquivo;
+
+        var imgProfile = $("#imgProfile");
+
+        var urlImage = urlBase + 'files/tmp/' + nomeArquivo;
+
+        imgProfile.attr('src', urlImage);
+    }
+
+    $('#txtFile').on('change', function (e) {
+        uploadImageProfile();
+    });
+
+    function uploadImageProfile() {
+        var txtFile = document.getElementById('txtFile');
+
+        var files = txtFile.files;
+
+        if (files.length == 0) {
+            showPopupError('Selecione uma imagem.');
+            return;
+        }
+
+        var file = files[0];
+
+        var data = new FormData();
+
+        data.append(file.name, file);
+
+        $.LoadingOverlay("show");
+
+        $.ajax(
+            {
+                type: 'POST',
+                url: urlBase + 'Curriculum/Upload',
+                data: data,
+                contentType: false,
+                processData: false,
+                success: function (result) {
+                    $.LoadingOverlay("hide");
+
+                    if (result.Ok) {
+                        showPopupSuccess(result.Message, function () { });
+
+                        setarImagem(result.Dados);
+                    }
+                    else
+                        showPopupError(result.Message);
+                },
+                error: function (httpRequest, status, erro) {
+                    $.LoadingOverlay("hide");
+
+                    showPopupError(erro);
+                }
+            }
+        );
+    }
+
+    $('#txtEstado').on('change', function (e) {
+        carregarCidades(e.target.value , 0);
+        }
+    );
+
+    function carregarCidades(estado, cidadeidSeleciona) {
+
+        $.LoadingOverlay("show");
+
+        $.ajax(
+            {
+                type: 'GET',
+                url: urlBase + 'Curriculum/ObterCidades?estado=' + estado,
+                success: function (result) {
+                    $.LoadingOverlay("hide");
+
+                    if (result.Ok) {
+
+                        var cidades = result.Dados;
+
+                        var txtCidade = $('#txtCidade');
+
+                        txtCidade.empty();
+
+                        for (var i = 0; i < cidades.length; i++) {
+                            var cidade = cidades[i];
+
+                            txtCidade.append('<option ' + (cidade.id == cidadeidSeleciona ? 'selected' : '') + ' value=' + cidade.id + '>' + cidade.nome + '</option>');
+                        }
+                    }
+                    else
+                        showPopupError(result.Message);
+                },
+                error: function (httpRequest, status, erro) {
+                    $.LoadingOverlay("hide");
+
+                    showPopupError(erro);
+                }
+            }
+        );
+    }
+
+    carregarCidades('@cidade.estado', @cidade.id);
+</script>

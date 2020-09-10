@@ -1,0 +1,37 @@
+﻿@using TelaEmpregos.Models.data
+
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="~/Resource/css/main.css" />
+    <title>Tela de Empregos</title>
+
+
+
+    <script src="~/Resource/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script src="~/Resource/plugins/loadingoverlay/loadingoverlay.min.js"></script>
+    <script src="~/Resource/plugins/loadingoverlay/loadingoverlay_progress.min.js"></script>
+
+    <script type='text/javascript' src='~/Resource/plugins/noty/jquery.noty.js'></script>
+    <script type='text/javascript' src='~/Resource/plugins/noty/layouts/topCenter.js'></script>
+    <script type='text/javascript' src='~/Resource/plugins/noty/layouts/topLeft.js'></script>
+    <script type='text/javascript' src='~/Resource/plugins/noty/layouts/topRight.js'></script>
+    <script type='text/javascript' src='~/Resource/plugins/noty/themes/default.js'></script>
+    <link rel="stylesheet" href="~/Resource/plugins/datatables/dataTables.bootstrap.css">
+    <script src="~/Resource/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Resource/plugins/datatables/dataTables.bootstrap.min.js"></script>
+
+    <script src="~/Resource/telaEmpregos.js"></script>
+</head>
+<body id="BodyIndex">
+    <div id="radius">
+        @RenderBody()
+    </div>
+</body>
+</html>
+
+
